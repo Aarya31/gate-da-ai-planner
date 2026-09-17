@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  gate-da-planner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gate_da_ai_planner
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-mock_key_for_dev}
+    restart: unless-stopped

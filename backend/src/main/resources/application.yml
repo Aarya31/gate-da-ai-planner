@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gate-da-planner-backend
+
+  datasource:
+    url: ${JDBC_URL:jdbc:h2:mem:gatedadb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class-name: ${JDBC_DRIVER:org.h2.Driver}
+    username: ${JDBC_USER:sa}
+    password: ${JDBC_PASSWORD:}
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    secret: 9a6f8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a
+    expiration-ms: 86400000 # 24 hours
+  ai:
+    provider: gemini
+    api-key: ${GEMINI_API_KEY:mock_key_for_dev}
+    model: gemini-1.5-flash
