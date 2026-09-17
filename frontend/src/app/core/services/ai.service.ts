@@ -8,7 +8,7 @@ import { StudyEvent } from '../models/event.model';
   providedIn: 'root'
 })
 export class AiService {
-  private apiUrl = 'http://localhost:8080/api/v1/ai';
+  private apiUrl = '/api/v1/ai';
 
   constructor(private http: HttpClient) {}
 

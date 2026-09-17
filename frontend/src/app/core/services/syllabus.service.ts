@@ -7,8 +7,8 @@ import { Subject, StudyProgress, MasteryLevel } from '../models/syllabus.model';
   providedIn: 'root'
 })
 export class SyllabusService {
-  private syllabusUrl = 'http://localhost:8080/api/v1/syllabus';
-  private progressUrl = 'http://localhost:8080/api/v1/progress';
+  private syllabusUrl = '/api/v1/syllabus';
+  private progressUrl = '/api/v1/progress';
 
   constructor(private http: HttpClient) {}
 

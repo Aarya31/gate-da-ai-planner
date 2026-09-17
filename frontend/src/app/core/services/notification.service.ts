@@ -15,7 +15,7 @@ export interface AppNotification {
   providedIn: 'root'
 })
 export class NotificationService {
-  private apiUrl = 'http://localhost:8080/api/v1/notifications';
+  private apiUrl = '/api/v1/notifications';
   notifications = signal<AppNotification[]>([]);
 
   constructor(private http: HttpClient) {}

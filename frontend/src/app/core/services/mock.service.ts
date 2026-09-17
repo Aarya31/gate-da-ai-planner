@@ -20,7 +20,7 @@ export interface MockTest {
   providedIn: 'root'
 })
 export class MockTestService {
-  private apiUrl = 'http://localhost:8080/api/v1/mocks';
+  private apiUrl = '/api/v1/mocks';
 
   constructor(private http: HttpClient) {}
 

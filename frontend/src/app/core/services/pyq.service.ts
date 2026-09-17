@@ -16,7 +16,7 @@ export interface PYQRecord {
   providedIn: 'root'
 })
 export class PyqService {
-  private apiUrl = 'http://localhost:8080/api/v1/pyqs';
+  private apiUrl = '/api/v1/pyqs';
 
   constructor(private http: HttpClient) {}
 

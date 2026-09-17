@@ -7,7 +7,7 @@ import { StudyEvent, EventStatus } from '../models/event.model';
   providedIn: 'root'
 })
 export class CalendarService {
-  private apiUrl = 'http://localhost:8080/api/v1/events';
+  private apiUrl = '/api/v1/events';
 
   constructor(private http: HttpClient) {}
 

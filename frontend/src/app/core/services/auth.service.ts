@@ -8,8 +8,8 @@ import { AuthResponse, User, UserAvailability } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/v1/auth';
-  private userApiUrl = 'http://localhost:8080/api/v1/users';
+  private apiUrl = '/api/v1/auth';
+  private userApiUrl = '/api/v1/users';
 
   currentUser = signal<User | null>(this.getStoredUser());
   token = signal<string | null>(localStorage.getItem('token'));
@@ -17,7 +17,6 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(email: string, password: string, fullName: string): Observable<AuthResponse> {
-    // Registration creates account but requires explicit sign in afterwards
     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, { email, password, fullName });
   }
 
