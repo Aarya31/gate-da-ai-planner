@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/services/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadComponent: () => import('./features/auth/login.component').then(m => m.LoginComponent) },
   { path: 'register', loadComponent: () => import('./features/auth/register.component').then(m => m.RegisterComponent) },
   { 
@@ -40,5 +40,5 @@ export const routes: Routes = [
     loadComponent: () => import('./features/settings/settings.component').then(m => m.SettingsComponent),
     canActivate: [authGuard] 
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];
