@@ -36,7 +36,25 @@ public class AuthService {
 
     @Transactional
     public AuthResponse register(AuthRequest request) {
-        throw new IllegalArgumentException("Wrong credentials");
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new IllegalArgumentException("User with this email already exists");
+        }
+
+        String name = (request.getFullName() != null && !request.getFullName().trim().isEmpty())
+                ? request.getFullName().trim()
+                : request.getEmail().split("@")[0];
+
+        User user = new User(
+                request.getEmail().trim().toLowerCase(),
+                passwordEncoder.encode(request.getPassword()),
+                name
+        );
+
+        User savedUser = userRepository.save(user);
+        seedDefaultAvailability(savedUser.getId());
+
+        String token = tokenProvider.generateToken(savedUser.getEmail());
+        return new AuthResponse(token, savedUser.getId(), savedUser.getEmail(), savedUser.getFullName());
     }
 
     public AuthResponse login(AuthRequest request) {
